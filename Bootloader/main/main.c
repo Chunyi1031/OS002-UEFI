@@ -177,6 +177,7 @@ EFI_STATUS EFIAPI efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable
             &MemoryMap.DescriptorSize, 
             &MemoryMap.DescriptorVersion);
         Share.MemoryMap = &MemoryMap;
+        Status = uefi_call_wrapper(gBS->ExitBootServices,2,ImageHandle, MapKey);
         if(EFI_ERROR(Status)){
             #ifdef debug
             //黄字打印警告
